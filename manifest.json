@@ -1,0 +1,33 @@
+{
+    "name": "TestExtension",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "description": "A plain text description blah blah",
+    "permissions": [
+        "declarativeContent",
+    "tabs",
+   "storage"
+  ],
+    "page_action": {
+        "default_icon": "icons/icon.png",
+        "default_title": "Cancel your free-trials",
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "scripts": ["background.js"],
+    "persistent": false
+  },
+  "chrome_ui_overrides": {
+    "bookmarks_ui": {
+      "remove_bookmark_shortcut": true,
+      "remove_button": true
+    }
+  },
+  "content_scripts": [
+    {
+        "matches": ["http://*/*", "https://*/*"],
+        "js": ["content.js"],
+        "run_at": "document_start"
+    }
+]
+}
